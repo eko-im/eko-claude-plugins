@@ -24,13 +24,13 @@ release artifacts and no CI secrets. Its supply-chain surface is therefore:
 |---|---|
 | Secret scanning of full history, pinned gitleaks binary + SHA256, positive controls | `.github/workflows/gitleaks.yml` |
 | Every external action pinned to a commit SHA; every workflow sets explicit `permissions` (enforced) | `scripts/validate-catalog.sh` |
-| Pinned actions kept current | `.github/dependabot.yml` |
+| Pinned actions kept current | by hand, through a reviewed PR (Dependabot is off across the owner's repos since 2026-10-21) |
 | Maintainer review on every path | `.github/CODEOWNERS` (needs branch protection, below) |
 | No vendored plugin code | `validate-catalog.yml` "Forbid agentic-tool / vendored trees" |
 
 Not in this repository, set by the owner in GitHub settings: branch protection
 on `main` (required review from code owners, required status checks
-`gitleaks` and `validate`), Dependabot security updates, and private
+`gitleaks` and `validate`) and private
 vulnerability reporting (off as of 2026-10-19).
 
 ## Tabletop: compromised upstream plugin (worm-style)
